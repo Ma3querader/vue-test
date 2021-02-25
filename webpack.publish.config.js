@@ -50,6 +50,13 @@ module.exports = {
         })
       }, // 创建处理 css 文件的 loader 匹配规则
       {
+        test: /\.scss$/, use: extractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader'],
+          publicPath: '../'
+        })
+      }, // 配置 处理 scss 文件的规则
+      {
         test: /\.jpg|png|gif|bmp$/, use: [
           {
             loader: "url-loader",

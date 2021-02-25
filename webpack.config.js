@@ -20,10 +20,12 @@ module.exports = {
     rules: [ // 就是这些 非 JS 文件 和 loader 之间的对应关系
       { test: /\.css$/, use: ['style-loader', 'css-loader'] }, // 创建处理 css 文件的 loader 匹配规则
       { test: /\.jpg|png|gif|bmp$/, use: 'url-loader' }, // 配置 处理 样式表中图片的 loader规则
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] }, // 配置 处理 scss 文件的规则
       // 添加转换JS文件的loader，
       // 其中，必须把 node_modules 目录设置为 排除项，这样，在打包的时候，会忽略node_modules 目录下的所有JS文件；否则项目运行不起来！
       { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.vue$/, use: 'vue-loader' }
+      { test: /\.vue$/, use: 'vue-loader' },
+      { test: /\.ttf|woff|woff2|eot|svg$/, use: 'url-loader' } // 处理 样式中字体文件路径的问题
     ]
   }
 
